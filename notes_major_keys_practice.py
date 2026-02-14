@@ -1,7 +1,10 @@
 import random
+import time
+import sys
+import pyfiglet
 
-# Key signatures (only accidentals)
-key_signatures = {
+## all key signature accidentals
+all_major_keys = {
     "C":  [],
     "G":  ["F#"],
     "D":  ["F#", "C#"],
@@ -16,20 +19,29 @@ key_signatures = {
     "Ab": ["Bb", "Eb", "Ab", "Db"]
 }
 
-def normalize(note):
-    return note.strip().capitalize()
+#make sure user doesn't get answers wrong for incorrect capitalization
+def normalize_input(input):
+    return input.strip().capitalize()
 
-print("🎼 Key Signature Trainer (Level 2)")
-print("Step 1: Enter number of accidentals.")
-print("Step 2: Enter the accidentals.")
-print("Type 'quit' anytime to exit.\n")
+## prints text with a typerwrite effect
+def typewriter_effect(text, delay=0.05):
+    for character in text:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(delay)
+
+print(pyfiglet.figlet_format("Major Key Trainer"))
+typewriter_effect("Step 1: Enter number of accidentals. \n")
+typewriter_effect("Step 2: Enter the accidentals. \n")
+typewriter_effect("Type 'quit' anytime to exit.\n")
+print()
 
 while True:
-    keys = list(key_signatures.keys())
+    keys = list(all_major_keys.keys())
     random.shuffle(keys)
 
     for key in keys:
-        correct = set(key_signatures[key])
+        correct = set(all_major_keys[key])
         num_correct = len(correct)
 
         print("\n---------------------------")
@@ -38,7 +50,7 @@ while True:
         user_input = input("Number: ")
 
         if user_input.lower() == "quit":
-            print("Good practice session 🎹")
+            print("BYEEEE")
             exit()
 
         if not user_input.isdigit():
@@ -63,10 +75,10 @@ while True:
             note_input = input("Accidental: ")
 
             if note_input.lower() == "quit":
-                print("Good practice session 🎹")
+                print("BYEEE")
                 exit()
 
-            note = normalize(note_input)
+            note = normalize_input(note_input)
 
             if note in correct:
                 if note in entered:
@@ -77,7 +89,6 @@ while True:
             else:
                 print("Not in this key signature.")
 
-        print(f"🔥 Good! {key} major complete!")
+        print(f"Good! {key} major complete!")
 
-    print("\n🎉 You completed all 12 keys! Reshuffling...\n")
-
+    print("\n You completed all 12 keys! Reshuffling...\n")
