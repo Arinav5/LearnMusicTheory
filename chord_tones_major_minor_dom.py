@@ -1,4 +1,5 @@
 import random
+import pyfiglet
 
 chromatic = ["C", "C#", "D", "D#", "E", "F",
              "F#", "G", "G#", "A", "A#", "B"]
@@ -31,7 +32,7 @@ def normalize(note):
         return enharmonics[note]
     return note
 
-print("🎶 1-3-5-7 Chord Trainer (Enharmonic Friendly)")
+print(pyfiglet.figlet_format("Chord Tones Trainer"))
 print("Type notes one at a time.")
 print("Type 'quit' anytime to exit.\n")
 
