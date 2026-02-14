@@ -1,6 +1,6 @@
 # Learn Music Theory
 A CLI music theory training app that drills: 
-* Major Key accidentals -- I use this to learn all of the major keys
+* Major Key accidentals
 * Chord Tones
 
 ## Features
